@@ -1,0 +1,40 @@
+<div class="container">
+  <nav class="nav nav-pills justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Brownfield Airlines</a>
+    </li>
+  </nav>
+</div>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-right ">
+      <a class="btn btn-primary" *ngIf="!authenticated" href="#/login">login</a>
+      <a class="btn btn-primary" *ngIf="authenticated" href=" " (click)="logout()">logout</a>
+      <p [hidden]="!authenticated ">
+        Signed in as
+        <a href="#/" class="navbar-link">{{user}}</a>
+      </p>
+    </div>
+  </div>
+</nav>
+<div class="alert alert-danger" [hidden]="!error">There was a problem logging in. Please try again.</div>
+<div class="container" *ngIf="!authenticated">
+  <form role="form" (submit)="login()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" id="username" name="username" [(ngModel)]="credentials.username" />
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="credentials.password" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="container" *ngIf="authenticated">
+  <a class="btn btn-primary" href="/ui-service/">Go To Browfield Airlines Dashboard</a>
+</div>
+<br />
+<div class="container" *ngIf="authenticated && admin">
+  <a class="btn btn-primary" href="/admin/">Go To Admin Interface</a>
+</div>

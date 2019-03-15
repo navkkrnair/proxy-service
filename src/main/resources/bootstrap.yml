@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: proxy-service
+  cloud:
+    config:
+      username: configuser
+      password: configpassword
+      uri: http://${CONFIG_SERVER}:8888   security:    user:      name: user
+      password: password
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'      
